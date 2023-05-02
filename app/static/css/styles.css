@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+/* Zera as config da página */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+}
+
+/*Menu*/
+
+.menu-bg {
+    background: linear-gradient(90deg, rgba(9, 9, 121, 1) 0%, rgba(49, 5, 245, 1) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+.menu-site {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-logo a {
+    font-family: 'Righteous', cursive !important;
+    font-size: 2.25em;
+    font-weight: 700;
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-logo a:hover {
+    color: #3a51d5;
+    transition: all .3s;
+    text-decoration: none;
+    
+}
+
+.menu-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu-nav a {
+    font-size: 1.25em;
+    font-weight: 700;
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-nav a:hover {
+    color: #122ab2;
+    transition: .3s;
+    text-decoration: none;
+}
+
+* BANNERS */
+#banners-container {
+    padding: 0;
+  }
+  
+.carousel-caption {
+    background: linear-gradient(90deg, rgba(9, 9, 121, 1) 0%, rgba(49, 5, 245, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    bottom: 5em;
+    padding: 1em;
+    left: 12%;
+    right: 12%;
+  }
+  
+  .carousel-caption h2 {
+    font-size: 1.8em;
+  }
+
+  .carousel-caption a {
+    text-decoration: none;
+  }
+
+
+
+  /* Footer */
+
+  .footer-bg {
+    background: linear-gradient(90deg, rgba(9, 9, 121, 1) 0%, rgba(49, 5, 245, 1) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+.footer-menu {
+    display: flex;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 15px 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-menu i,
+.contato-footer i,
+a {
+    color: white;
+}
+
+.copy-footer-site {
+    color: white;
+    padding-right: 40px;
+    border-right: 1px solid white;
+}
+
+.social-footer {
+    display: flex;
+}
+
+.social-footer i {
+    font-size: 34px;
+    padding: 5px;
+}
