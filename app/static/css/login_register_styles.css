@@ -1,0 +1,31 @@
+/* login e register */
+
+#form-container {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0.5px 10px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  #form-container a {
+    color: #007bff;
+    text-decoration: none;
+    transition: 0.5s;
+  }
+  
+  #form-container a:hover {
+    color: #0056b3;
+  }
+  
+  #form-container .form-control:hover {
+    border: #007bff solid 2px;
+  }
+  
+  .important { 
+    color: #ff0000; 
+  }
+  
+  .row_form {
+    align-content: center;
+    height: 100%;
+    padding: 20px;
+  }

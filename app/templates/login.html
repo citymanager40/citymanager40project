@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+{% include 'include.html' %}
+
+<body class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+
+    <div class="container col-12 col-md-6 col-lg-4" id="form-container">
+        <div class="row_form justify-content-center ">
+            <div class="col ">
+                <div class="text-center mb-3">
+                    <i class="bi bi-person-circle text-center md-4" style="font-size: 4em;"></i>
+                </div>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    {{ messages[0] }}.
+                </div>
+                {% endif %}
+                {% endwith %}
+                <!-- Inicio do form -->
+                <form action="" method="POST" class="form-signin">
+                    <div class="d-grid form-signin mt-3">
+                        {{form.email.label(class_="form-label")}}
+                        {{form.email(class_="form-control")}}
+                        {% for error in form.email.errors %}
+                        <div class="important">
+                            {{error}}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="d-grid form-signin mt-3">
+                        {{form.password.label(class_="form-label")}}
+                        {{form.password(class_="form-control")}}
+                        {% for error in form.password.errors %}
+                        <div class="important">
+                            {{error}}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                        <div class="d-grid mb-3 mt-5">
+                            {{ form.submit(class_="btn btn-primary") }}
+                        </div>
+                        <div class="checkbox text-center mb-3">
+                            Ainda não tem cadastro? <a href="{{url_for('login.register')}}"> Clique aqui. </a>
+                        </div>
+                    
+                </form>
+                <!-- Fim do form -->
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

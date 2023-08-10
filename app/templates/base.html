@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+{% include 'include.html' %}
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" >
+    <div class="container-fluid container_nav">
+       
+            <a class="navbar-brand" href="{{url_for('evento.home')}}"> 
+              <h3 class="urban_logo"> CITY MANAGER 4 </h3>
+            </a>
+       
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('login.site')}}">Site</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('evento.home')}}">Início</a>
+          </li> 
+          {% if ('URBANMOB_GOVERNO' in session["roles"] or 'URBANMOB_ADMIN' in session["roles"]) %}
+          <li class="nav-item" id="novaocorrenciaadmmenu">
+            <a class="nav-link" href="{{url_for('evento.iniciar')}}">Cadastrar Demanda</a>
+          </li>   
+          {% endif %}       
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('login.logout')}}">Sair</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>  
+  
+  {% with messages = get_flashed_messages(category_filter=["sucess"]) %}
+  {% if messages %}
+      <div class="alert alert-success" role="alert">
+          {{ messages[0] }}.
+      </div>
+  {% endif %}
+  {% endwith %} 
+
+  {% with messages = get_flashed_messages(category_filter=["error"]) %}
+  {% if messages %}
+      <div class="alert alert-danger" role="alert">
+          {{ messages[0] }}.
+      </div>
+  {% endif %}
+  {% endwith %}  
+
+  {% block conteudo %}
+
+  {% endblock conteudo %}
+
+</body>
+
+</html>

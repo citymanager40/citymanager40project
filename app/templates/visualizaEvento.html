@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<div class="container-fluid">
+    <div class="row">
+        <section class="col-md-3 col-lg-3 painel_esquerdo_geral">
+      
+            <div class="titulo_identificacao_logado">
+            <!-- Identificação do Cidadão Logado -->
+              
+              <div class="urban-gov-menu-gov">
+                {% if current_user.is_authenticated %}
+                <a href="/"><i class="bi bi-person-circle "></i></a>
+                <span class="titulo-menu-gov">{{ current_user.name }}</span>
+                {% endif %}
+              </div>
+      
+              <div class="urban-gov-menu-gov" id="div-iden-cidade">
+                <span class="logado-cidade"> Fortaleza-CE </span>
+                <i class="bi bi-check2-square"></i>
+              </div>
+      
+            </div>
+            <div class="titulo-baixar-app-barra-lateral">
+                <span class="titulo-baixar-app-barra-lateral">Para uma experiência completa baixe nosso app:</span></a>
+            </div>
+            <div class="imagens-lojas-apps">
+                <img class="img_googleplay_home" src="\static\img\google-play-dark.png">
+                <img class="img_appstore_home" src="\static\img\app-store-dark.png">
+            </div>
+            <div class="footer_painel_esquerdo_geral">
+              <span class="titulo_footer_painel_esquerdo_geral">
+               Política de Privacidade</span>
+              <span class="titulo_footer_painel_esquerdo_geral"> © Tiger_Dev 2022 </span>
+            </div>
+            
+        </section>
+
+        <div class="col-md-9 col-lg-9 container-fluid">
+            <div class="container painel-direito-home">
+                <div class="div-titulo-minha-demanda">
+                    <h6 class="titulo-minha-demanda">Minha Demanda</h6>
+                </div>
+                Ocorrência: <span class="fw-bold">{{eventoHistorico.evento.numOcorrencia}}</span> <br>
+                Início: <span class="fw-normal">{{eventoHistorico.evento.dataInicio.strftime('%d/%m/%Y %H:%M')}}</span> <br>
+                <div class="status-evento">
+                    Status: <span class="fw-normal">
+                        {% if eventoHistorico.statusEvento.id == 1 %}
+                        <p class="alert alert-danger mt-2 p-1 " role="alert"> {{eventoHistorico.statusEvento.txtStatusEvento}} </p>
+                        {% endif %}
+        
+                        {% if eventoHistorico.statusEvento.id == 2 %}
+                        <p class="alert alert-success mt-2 p-1" role="alert"> {{eventoHistorico.statusEvento.txtStatusEvento}} </p>
+                        {% endif %}
+        
+                        {% if eventoHistorico.statusEvento.id == 3 %}
+                        <p class="alert alert-info mt-2 p-1" role="alert"> {{eventoHistorico.statusEvento.txtStatusEvento}} </p>
+                        {% endif %}
+                    </span>
+                    </div>
+                Última Atualização: <span class="fw-normal">{{eventoHistorico.dataInicio.strftime('%d/%m/%Y %H:%M')}}</span> <br>
+                Tipo: <span class="fw-normal">{{eventoHistorico.evento.subcategoria.txtSubcategoria}} -
+                    {{eventoHistorico.evento.subcategoria.categoria.txtCategoria}}</span> <br>
+                Endereço: <span class="fw-normal">{{eventoHistorico.evento.txtEndereco}}</span> <br>
+                <strong>Problema:</strong> <span class="fw-normal"><strong>{{eventoHistorico.evento.txtProblema}}</strong></span> <br>
+                Latitude: <span class="fw-normal">{{eventoHistorico.evento.txtLat}}</span> <br>
+                Longitude: <span class="fw-normal">{{eventoHistorico.evento.txtLong}}</span> <br><br>
+                <div class="container">
+                    <div class="row align-items-center justify-content-center">
+                        <figure class="figure text-center" id="img">
+                            <img class="figure-img rounded"
+                                src="data:image/jpeg;base64,{{eventoHistorico.evento.fileBase64}}" width="100%">
+                            <figcaption class="figure-caption">{{eventoHistorico.evento.txtProblema}}</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="container">
+                        <h5> <strong> Ocorrência: <span>{{eventoHistorico.evento.numOcorrencia}}</span></strong></h5> 
+                        <hr>
+                        {% for eventoHistorico in listEventoHistorico %}
+                            <span class="font-weight-bold"> Status: </span><span class="fw-normal">{{eventoHistorico.statusEvento.txtStatusEvento}}</span> <br>
+                            <!-- Usuário que mudou o status: <span class="fw-normal">{{eventoHistorico.usuario.name}}</span> <br> -->
+                            {% for obs in eventoHistorico.listObservacao %}
+                                <span class="font-weight-bold">{{obs.usuario.name}}</span> em <span class="fw-normal">{{obs.dataInicio.strftime('%d/%m/%Y %H:%M')}}: </span> <span class="fw-normal">{{obs.txtObservacao}}</span> <br>
+                                <!-- Usuário que cadastrou a observação: <span class="fw-normal">{{obs.usuario.name}}</span> <br> -->
+                            {%endfor%}
+                        {%endfor%}
+                        <div class="d-grid gap-2 m-2 d-md-flex mx-auto justify-content-md-end">
+                            <button type="button" class="btn btn-danger btn-sm"
+                                onclick="window.location.href='{{url_for('evento.home')}}';"><i class="bi bi-arrow-left-circle"></i>Voltar
+                            </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock conteudo %}

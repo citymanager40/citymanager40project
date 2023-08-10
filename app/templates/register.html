@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+{% include 'include.html' %}
+
+<body class="d-flex align-items-center justify-content-center" >   
+       
+    <div class="container col-12 col-md-6 py-3" id="form-container" >
+            <div class="row_form justify-content-center">
+                <div class="col">
+                        <h3 class="text-center mb-3">Realize o seu cadastro</h3>
+                    {% with messages = get_flashed_messages(category_filter=["exist"]) %}
+                    {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ messages[0] }}. Ir para <a href="{{ url_for('login.login') }}">página de login</a>.
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+
+                    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+                    {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ messages[0] }}.
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+
+                    <form action="" method="post">
+                        <div class="form-signin mb-3">
+                            {{form.name.label(class_="form-label")}}
+                            {{form.name(class_="form-control")}}
+                            {% for error in form.name.errors %}
+                            <div class="important">
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-signin mb-3">
+                            {{form.email.label(class_="form-label")}}
+                            {{form.email(class_="form-control")}}
+                            {% for error in form.email.errors %}
+                            <div class="important">
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-signin mb-3">
+                            {{form.cpf.label(class_="form-label")}}
+                            {{form.cpf(class_="form-control")}}
+                            {% for error in form.cpf.errors %}
+                            <div class="important">
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-signin mb-3">
+                            {{form.password.label(class_="form-label")}}
+                            {{form.password(class_="form-control")}}
+                            {% for error in form.password.errors %}
+                            <div class="important">
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-signin mb-3">
+                            {{form.confirm_password.label(class_="form-label")}}
+                            {{form.confirm_password(class_="form-control")}}
+                            {% for error in form.confirm_password.errors %}
+                            <div class="important">
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check mb-2">
+                                {{form.accept_tos.label(class_="form-label")}}
+                                {{form.accept_tos(class_="form-check-input")}}
+                                {% for error in form.accept_tos.errors %}
+                                <div class="important">
+                                    {{error}}
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="form-check mb-2">
+                                {{form.newsletters.label(class_="form-label")}}
+                                {{form.newsletters(class_="form-check-input")}}
+                                {% for error in form.newsletters.errors %}
+                                <div class="important">
+                                    {{error}}
+                                </div>
+                                {% endfor %}
+                            </div> 
+                        </div>
+                       
+                            <div class="d-grid mb-3">
+                                {{ form.submit(class_="btn btn-primary") }}
+                            </div>
+                            <div class="checkbox text-center mb-3" id="link-container">
+                                <a href="{{url_for('login.login')}}">Eu já tenho uma conta</a>
+                            </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+   
+</body>
+</html>
+
