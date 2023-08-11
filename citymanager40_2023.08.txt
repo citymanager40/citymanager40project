@@ -1,0 +1,51 @@
+citymanager40project
+├── app
+│   ├── controller
+│   │   ├── eventoController.py
+│   │   ├── eventoSearchController.py
+│   │   ├── loginController.py
+│   │   ├── roleRequired.py
+│   │   └── __init__.py
+│   ├── database.py
+│   ├── enum
+│   │   └── statusEventoEnum.py
+│   ├── forms
+│   │   ├── eventoForm.py
+│   │   ├── loginForm.py
+│   │   └── registerForm.py
+│   ├── models
+│   │   ├── categoriaModel.py
+│   │   ├── eventoHistoricoModel.py
+│   │   ├── eventoModel.py
+│   │   ├── eventoObservacaoModel.py
+│   │   ├── statusEventoModel.py
+│   │   ├── subcategoriaModel.py
+│   │   ├── userModel.py
+│   │   └── __init__.py
+│   ├── rotas
+│   │   ├── eventoRout.py
+│   │   ├── eventoSearchRout.py
+│   │   ├── loginRout.py
+│   │   └── __init__.py
+│   ├── static
+│   │   ├── css
+│   │   │   ├── general_styles.css
+│   │   │   ├── login_register_styles.css
+│   │   │   └── styles.css
+│   │   └── img
+│   │       ├── imagem_fundo_site.png
+│   │       ├── img2site.jpg
+│   │       └── img3site.jpg
+│   ├── templates
+│   │   ├── base.html
+│   │   ├── erro.html
+│   │   ├── home.html
+│   │   ├── include.html
+│   │   ├── includeLinksEsquerda.html
+│   │   ├── index.html
+│   │   ├── login.html
+│   │   ├── register.html
+│   │   └── visualizaEvento.html
+│   └── __init__.py
+├── app.py
+└── requirements.txt
